@@ -13,8 +13,10 @@
 <body>
     <div id="app" class="container">
         <div class="new-todo">
-            <input type="text" placeholder="Nuova Task" v-model="newTodo.text" required>
-            <button type="submit">add</button>
+            <form @submit.prevent="addToDo()">
+                <input type="text" placeholder="New Todo" v-model="newTodo.text" required>
+                <button type="submit">add</button>
+            </form>
         </div>
         
         <div class="todo-list">

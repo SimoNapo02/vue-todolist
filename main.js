@@ -3,14 +3,14 @@ const app = new Vue({
     data: {
         todos: [{
                 text: "fare la spesa",
-                isDone: true
+                isDone: false
             },
             {
                 text: "stendere i panni",
                 isDone: false
             },
             {
-                text: "telefonare la zia ",
+                text: "programmare pagine web",
                 isDone: false
             },
         ],
@@ -19,4 +19,19 @@ const app = new Vue({
             isDone: false,
         },
     },
-})
+    methods: {
+        addToDo() {
+            if (this.newTodo !== " ") {
+                this.todos.push(this.newTodo);
+                this.newTodo = "";
+            }
+        },
+        removeToDo(index) {
+            this.todos.splice(index, 1)
+        },
+        doneToDo(index) {
+            this.todos[index].isDone = !this.todos[index].isDone
+        }
+
+    },
+});
