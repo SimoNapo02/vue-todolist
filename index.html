@@ -14,7 +14,7 @@
     <div id="app" class="container">
         <div class="new-todo">
             <form @submit.prevent="addToDo()">
-                <input type="text" placeholder="New Todo" v-model="newTodo.text" required>
+                <input type="text" placeholder="New task" v-model="newTodo.text" required>
                 <button type="submit">add</button>
             </form>
         </div>
@@ -23,7 +23,7 @@
             <ul v-if="todos.length > 0">
                 <li class="todo" v-for="(todo, index) in todos"><span :class="{ 'done': todo.isDone}">{{todo.text}}</span><span><i @click="doneToDo(index)" class="fa-solid fa-check"></i><i @click="removeToDo(index)" class="fa-solid fa-xmark"></i></span></li>
             </ul>
-            <h2 v-else>Non sono presenti todo</h2>
+            <h2 v-else>Pare che le tue task siano finite per ora ;)</h2>
         </div>
 
     </div>
