@@ -1,37 +1,37 @@
 const app = new Vue({
-    el: "#app",
+    el: "#container",
     data: {
-        todos: [{
-                text: "fare la spesa",
-                isDone: false
+        todo: [
+            {
+                text: "Fare la spesa",
+                done: true,
             },
             {
-                text: "stendere i panni",
-                isDone: false
+                text: "Camminare",
+                done: false,
             },
             {
-                text: "programmare pagine web",
-                isDone: false
+                text: "Fare esercizio fisico",
+                done: false,
+            },
+            {
+                text: "Pulire casa",
+                done: true,
             },
         ],
-        newTodo: {
-            text: " ",
-            isDone: false,
-        },
+        target: "",
+
     },
     methods: {
-        addToDo() {
-            if (this.newTodo !== " ") {
-                this.todos.push(this.newTodo);
-                this.newTodo = "";
+        addTodo() {
+            if(this.target !== "") {
+                elm = {"text": this.target, "done": false};
+                this.todo.push(elm);
+                this.target = "";
             }
         },
-        removeToDo(index) {
-            this.todos.splice(index, 1)
+        removeTodo(index) {
+            this.todo.splice(index, 1);
         },
-        doneToDo(index) {
-            this.todos[index].isDone = !this.todos[index].isDone
-        }
-
     },
 });

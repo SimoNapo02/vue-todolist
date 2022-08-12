@@ -11,22 +11,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div id="app" class="container">
-        <div class="new-todo">
-            <form @submit.prevent="addToDo()">
-                <input type="text" placeholder="New task" v-model="newTodo.text" required>
-                <button type="submit">add</button>
+    <header>
+        <h1>vue-to do list</h1>
+    </header>
+    <main>
+        <div id="container">
+            <form @submit.prevent="addTodo()">
+                <input type="text" placeholder="Cosa vuoi o devi fare?" v-model="target" required>
+                <button type="submit">Add</button>
             </form>
-        </div>
-        
-        <div class="todo-list">
-            <ul v-if="todos.length > 0">
-                <li class="todo" v-for="(todo, index) in todos"><span :class="{ 'done': todo.isDone}">{{todo.text}}</span><span><i @click="doneToDo(index)" class="fa-solid fa-check"></i><i @click="removeToDo(index)" class="fa-solid fa-xmark"></i></span></li>
+            <ul v-if="todo.length > 0">
+                <li class="todo" v-for="(elm, index) in todo"> 
+                    <div :class="{done : elm.done}" @click="elm.done = !elm.done">{{elm.text}}</div>
+                    <i v-if="!elm.done" class="fa-solid fa-xmark red" @click="removeTodo(index)"></i>
+                    <i v-else class="fa-solid fa-check green" @click="removeTodo(index)"></i>
+                </li>
             </ul>
-            <h2 v-else>Pare che le tue task siano finite per ora ;)</h2>
+            <p v-else>Wow! Sembra tu non debba fare nulla ;)</p>
         </div>
-
-    </div>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
